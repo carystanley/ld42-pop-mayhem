@@ -1,0 +1,5 @@
+/node_modules/
+.eslintcache
+app.js.map
+.DS_Store
+ynpm-debug.log
