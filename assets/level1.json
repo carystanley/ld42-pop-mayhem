@@ -12,8 +12,30 @@
          "width":100,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "name":"objects",
+         "objects":[
+                {
+                 "height":0,
+                 "id":1,
+                 "name":"start",
+                 "point":true,
+                 "rotation":0,
+                 "type":"start",
+                 "visible":true,
+                 "width":0,
+                 "x":216,
+                 "y":360
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextobjectid":1,
+ "nextobjectid":2,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.6",
@@ -35,11 +57,19 @@
              "3":
                 {
                  "collides":true
+                },
+             "4":
+                {
+                 "collides":true
                 }
             },
          "tilepropertytypes":
             {
              "3":
+                {
+                 "collides":"bool"
+                },
+             "4":
                 {
                  "collides":"bool"
                 }
