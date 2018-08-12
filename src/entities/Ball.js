@@ -10,8 +10,4 @@ export default class Baddie extends Phaser.Physics.Arcade.Sprite {
             .setOffset(4, 0)
             .setCollideWorldBounds(true);
     }
-
-    update() {
-
-    }
 }

@@ -107,20 +107,20 @@
                  "type":"ball",
                  "visible":true,
                  "width":0,
-                 "x":273.5,
-                 "y":162
+                 "x":407.5,
+                 "y":156
                 }, 
                 {
                  "height":0,
                  "id":12,
-                 "name":"ball",
+                 "name":"cat",
                  "point":true,
                  "rotation":0,
-                 "type":"ball",
+                 "type":"cat",
                  "visible":true,
                  "width":0,
-                 "x":416.5,
-                 "y":150.5
+                 "x":262.5,
+                 "y":192.5
                 }],
          "opacity":1,
          "type":"objectgroup",
