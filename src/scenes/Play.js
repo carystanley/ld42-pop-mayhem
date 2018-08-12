@@ -1,5 +1,5 @@
 import Player from '../entities/Player.js';
-import Baddie from '../entities/Baddie.js';
+import Ball from '../entities/Ball.js';
 
 const POPCORN_START = 16;
 const POPCORN_END = POPCORN_START + 15;
@@ -55,7 +55,7 @@ class Play extends Phaser.Scene {
         map.filterObjects('objects', function(obj) {
             return (obj.type === 'ball');
         }).forEach(function(loc) {
-            this.baddies.add(new Baddie(this, loc.x, loc.y));
+            this.baddies.add(new Ball(this, loc.x, loc.y));
         }, this);
         this.physics.add.collider(this.baddies, worldLayer);
         this.physics.add.overlap(this.player, this.baddies, this.playerHitBaddie, null, this);

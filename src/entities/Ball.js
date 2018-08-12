@@ -4,11 +4,11 @@ export default class Baddie extends Phaser.Physics.Arcade.Sprite {
         scene.physics.add.existing(this);
         scene.add.existing(this);
 
-        this.setMaxVelocity(500, 500)
+        this.setBounce(1, 1)
+            .setMaxVelocity(500, 500)
             .setSize(8, 16)
             .setOffset(4, 0)
-            .setCollideWorldBounds(true)
-            .setBounce(0.5);
+            .setCollideWorldBounds(true);
     }
 
     update() {
