@@ -23,6 +23,7 @@ class Preloader extends Phaser.Scene {
         this.load.image('title-background', 'title-background.png');
         this.load.image('life', 'life.png');
         this.load.image('tiles', 'tiles.png');
+        this.load.image('ball', 'ball.png');
         this.load.spritesheet('player', 'player.png', { frameWidth: 24, frameHeight: 24 });
         this.load.tilemapTiledJSON('level1', 'level1.json');
         this.load.tilemapTiledJSON('level2', 'level2.json');

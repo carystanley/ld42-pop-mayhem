@@ -1,5 +1,5 @@
 import Player from '../entities/Player.js';
-// import Baddie from '../entities/Baddie.js';
+import Baddie from '../entities/Baddie.js';
 
 const POPCORN_START = 16;
 const POPCORN_END = POPCORN_START + 15;
@@ -51,12 +51,14 @@ class Play extends Phaser.Scene {
         }, this);
         this.physics.add.overlap(this.player, this.goals, this.onGoal, null, this);
 
-        /*
         this.baddies = this.physics.add.group();
-        this.baddies.add(new Baddie(this, 56, 45));
+        map.filterObjects('objects', function(obj) {
+            return (obj.type === 'ball');
+        }).forEach(function(loc) {
+            this.baddies.add(new Baddie(this, loc.x, loc.y));
+        }, this);
         this.physics.add.collider(this.baddies, worldLayer);
-        this.physics.add.collider(this.player, this.baddies, this.playerHitBaddie, null, this);
-        */
+        this.physics.add.overlap(this.player, this.baddies, this.playerHitBaddie, null, this);
 
         for (var i = 0; i < this.lives; i++) {
             let life = this.add.image(16 + (i * 16), 16, 'life');
@@ -90,8 +92,13 @@ class Play extends Phaser.Scene {
         }
 
         // this.randomPopSound();
+        this.baddies.getChildren().forEach((baddie) => {
+            if (this.isEntitySquashed(baddie)) {
+                baddie.destroy();
+            }
+        });
         this.player.update();
-        if (this.isPlayerSquashed()) {
+        if (this.isEntitySquashed(this.player)) {
             this.doPlayerSquashed();
         }
         this.popCounter += this.popRate;
@@ -129,8 +136,8 @@ class Play extends Phaser.Scene {
         }
     }
 
-    isPlayerSquashed () {
-        const body = this.player.body;
+    isEntitySquashed (entity) {
+        const body = entity.body;
         const t = body.top;
         const l = body.left;
         const r = body.right;
@@ -215,7 +222,8 @@ class Play extends Phaser.Scene {
 
     playerHitBaddie() {
         if (!(this.player.hurtCount > 0)) {
-            this.gameOver();
+            this.player.hurtCount = 60;
+            this.player.setVelocityX(0);
         }
     }
 

@@ -97,6 +97,30 @@
                  "width":84.0000000000001,
                  "x":465.5,
                  "y":115
+                }, 
+                {
+                 "height":0,
+                 "id":10,
+                 "name":"ball",
+                 "point":true,
+                 "rotation":0,
+                 "type":"ball",
+                 "visible":true,
+                 "width":0,
+                 "x":273.5,
+                 "y":162
+                }, 
+                {
+                 "height":0,
+                 "id":12,
+                 "name":"ball",
+                 "point":true,
+                 "rotation":0,
+                 "type":"ball",
+                 "visible":true,
+                 "width":0,
+                 "x":416.5,
+                 "y":150.5
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -104,7 +128,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":10,
+ "nextobjectid":13,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.6",
