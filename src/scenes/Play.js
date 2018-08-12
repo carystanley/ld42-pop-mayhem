@@ -74,22 +74,24 @@ class Play extends Phaser.Scene {
         ];
 
         this.playerIsSquashed = false;
+        this.popRate = 1.40;
+        this.popCounter = 0;
     }
 
     update () {
-        /*
-        if (Math.random() < .08) {
-            this.popSounds[0].play();
-        } else if (Math.random() < .08) {
-            this.popSounds[1].play();
-        }
-        */
-
+        // this.randomPopSound();
         this.player.update();
         if (this.isPlayerSquashed()) {
             this.doPlayerSquashed();
         }
+        this.popCounter += this.popRate;
+        while (this.popCounter > 1) {
+            this.popCounter--;
+            this.popSomeCorn();
+        }
+    }
 
+    popSomeCorn() {
         let location = null;
         let tile;
         do {
@@ -106,6 +108,14 @@ class Play extends Phaser.Scene {
             this.queuePush(x - 1, y);
             this.queuePush(x + 1, y);
             this.queuePush(x, y - 1);
+        }
+    }
+
+    randomPopSound() {
+        if (Math.random() < .08) {
+            this.popSounds[0].play();
+        } else if (Math.random() < .08) {
+            this.popSounds[1].play();
         }
     }
 
