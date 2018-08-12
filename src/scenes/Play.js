@@ -24,7 +24,8 @@ class Play extends Phaser.Scene {
         const map = this.make.tilemap({ key: 'level' + this.level });
         const tileset = map.addTilesetImage('tiles', 'tiles');
 
-        map.createDynamicLayer('background', tileset, 0, 0);
+        map.createStaticLayer('background', tileset, 0, 0);
+        map.createStaticLayer('furniture', tileset, 0, 0);
         const worldLayer = map.createDynamicLayer('world', tileset, 0, 0);
         worldLayer.setCollisionByProperty({ collides: true });
         this.physics.world.gravity.y = 350;
@@ -73,13 +74,22 @@ class Play extends Phaser.Scene {
             this.sound.add('pop2')
         ];
 
+        this.physics.pause();
+        this.time.delayedCall(1000, function() {
+            this.physics.resume();
+        }, [], this);
+
         this.playerIsSquashed = false;
-        this.popRate = 1.40;
+        this.popRate = 1.30;
         this.popCounter = 0;
     }
 
     update () {
         // this.randomPopSound();
+        if (this.physics.world.isPaused) {
+            return;
+        }
+
         this.player.update();
         if (this.isPlayerSquashed()) {
             this.doPlayerSquashed();

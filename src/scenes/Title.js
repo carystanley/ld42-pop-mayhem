@@ -32,7 +32,7 @@ class Title extends Phaser.Scene {
             this.scene.start('play', {lives: 3, level: 1});
         }, this);
 
-        this.scene.start('play', {lives: 3, level: 1});
+        // this.scene.start('play', {lives: 3, level: 1});
     }
 }
 
