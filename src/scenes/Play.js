@@ -1,6 +1,16 @@
 import Player from '../entities/Player.js';
 // import Baddie from '../entities/Baddie.js';
 
+const POPCORN_START = 16;
+const POPCORN_END = POPCORN_START + 15;
+
+function neighborsToInt(t, r, b, l) {
+    return (t ? 1 : 0) +
+        (r ? 2 : 0) +
+        (b ? 4 : 0) +
+        (l ? 8 : 0);
+}
+
 class Play extends Phaser.Scene {
     constructor (config) {
         super({ key: 'play' });
@@ -116,9 +126,40 @@ class Play extends Phaser.Scene {
         }
     }
 
-    popcornLocation (x, y) {
-        const tile = this.worldLayer.putTileAt(5, x, y);
+    updatePopcornTile(x, y) {
+        const tileId = neighborsToInt(
+            this.isPopcorn(x, y-1),
+            this.isPopcorn(x+1, y),
+            this.isPopcorn(x, y+1),
+            this.isPopcorn(x-1, y)
+        ) + POPCORN_START;
+        const tile = this.worldLayer.putTileAt(tileId, x, y);
         tile.setCollision(true);
+    }
+
+    isPopcorn(x, y) {
+        const tile = this.worldLayer.getTileAt(x, y);
+        if (tile) {
+            const id = tile.index;
+            return (id >= POPCORN_START) && (id <= POPCORN_END);
+        }
+        return false;
+    }
+
+    popcornLocation (x, y) {
+        this.updatePopcornTile(x, y);
+        if (this.isPopcorn(x, y-1)) {
+            this.updatePopcornTile(x, y-1);
+        }
+        if (this.isPopcorn(x+1, y)) {
+            this.updatePopcornTile(x+1, y);
+        }
+        if (this.isPopcorn(x, y+1)) {
+            this.updatePopcornTile(x, y+1);
+        }
+        if (this.isPopcorn(x-1, y)) {
+            this.updatePopcornTile(x-1, y);
+        }
     }
 
     doPlayerSquashed () {
