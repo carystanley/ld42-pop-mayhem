@@ -85,11 +85,11 @@ class Play extends Phaser.Scene {
     }
 
     update () {
-        // this.randomPopSound();
         if (this.physics.world.isPaused) {
             return;
         }
 
+        // this.randomPopSound();
         this.player.update();
         if (this.isPlayerSquashed()) {
             this.doPlayerSquashed();
