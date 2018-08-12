@@ -3,6 +3,7 @@ import Preloader from './scenes/Preloader.js';
 import Title from './scenes/Title.js';
 import Play from './scenes/Play.js';
 import GameOver from './scenes/GameOver.js';
+import Completed from './scenes/Completed.js';
 
 var config = {
     type: Phaser.AUTO,
@@ -20,7 +21,8 @@ var config = {
         Preloader,
         Title,
         Play,
-        GameOver
+        GameOver,
+        Completed
     ],
     antialias: false,
     pixelArt: true,

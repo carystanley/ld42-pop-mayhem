@@ -242,7 +242,7 @@ class Play extends Phaser.Scene {
                     lives: this.lives
                 });
             } else {
-                this.scene.start('gameover');
+                this.scene.start('completed');
             }
         }, [], this);
     }
