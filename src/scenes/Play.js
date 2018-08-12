@@ -16,8 +16,12 @@ class Play extends Phaser.Scene {
         super({ key: 'play' });
     }
 
-    create () {
-        const map = this.make.tilemap({ key: 'level1' });
+    create (config) {
+        this.level = config.level;
+        this.lives = config.lives;
+        console.log(config);
+
+        const map = this.make.tilemap({ key: 'level' + this.level });
         const tileset = map.addTilesetImage('tiles', 'tiles');
 
         map.createDynamicLayer('background', tileset, 0, 0);
@@ -172,8 +176,14 @@ class Play extends Phaser.Scene {
 
             // restart game
             this.time.delayedCall(500, function() {
-                this.scene.start('gameover');
-                // this.scene.restart();
+                if (this.lives > 1) {
+                    this.scene.restart({
+                        level: this.level,
+                        lives: this.lives-1
+                    });
+                } else {
+                    this.scene.start('gameover');
+                }
             }, [], this);
         }
     }
@@ -185,7 +195,17 @@ class Play extends Phaser.Scene {
     }
 
     onGoal() {
-        this.scene.pause();
+        this.physics.pause();
+        this.time.delayedCall(500, function() {
+            if (this.level < 2) {
+                this.scene.restart({
+                    level: this.level+1,
+                    lives: this.lives
+                });
+            } else {
+                this.scene.start('gameover');
+            }
+        }, [], this);
     }
 }
 

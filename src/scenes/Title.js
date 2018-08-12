@@ -29,8 +29,10 @@ class Title extends Phaser.Scene {
         });
 
         this.input.keyboard.on('keydown_SPACE', function (event) {
-            this.scene.start('play');
+            this.scene.start('play', {lives: 3, level: 1});
         }, this);
+
+        this.scene.start('play', {lives: 3, level: 1});
     }
 }
 

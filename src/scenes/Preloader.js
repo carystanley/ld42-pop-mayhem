@@ -24,6 +24,7 @@ class Preloader extends Phaser.Scene {
         this.load.image('tiles', 'tiles.png');
         this.load.spritesheet('player', 'player.png', { frameWidth: 24, frameHeight: 24 });
         this.load.tilemapTiledJSON('level1', 'level1.json');
+        this.load.tilemapTiledJSON('level2', 'level2.json');
         this.load.image('165', '165.png');
         this.load.image('165-black', '165-black.png');
 
@@ -44,8 +45,7 @@ class Preloader extends Phaser.Scene {
         this.cache.bitmapFont.add('baseFont', Phaser.GameObjects.RetroFont.Parse(this, config));
         config = Object.assign({}, config, {image: '165-black'});
         this.cache.bitmapFont.add('baseFontBlack', Phaser.GameObjects.RetroFont.Parse(this, config));
-        // this.scene.start('title');
-        this.scene.start('play');
+        this.scene.start('title');
     }
 }
 
