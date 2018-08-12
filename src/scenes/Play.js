@@ -88,7 +88,11 @@ class Play extends Phaser.Scene {
         }, [], this);
 
         this.playerIsSquashed = false;
-        this.popRate = 1.30;
+        if (this.level < 3) {
+            this.popRate = 1.30;
+        } else {
+            this.popRate = .80;
+        }
         this.popCounter = 0;
     }
 
@@ -97,7 +101,7 @@ class Play extends Phaser.Scene {
             return;
         }
 
-        // this.randomPopSound();
+        this.randomPopSound();
         this.baddies.getChildren().forEach((baddie) => {
             if (this.isEntitySquashed(baddie)) {
                 baddie.destroy();
@@ -236,7 +240,7 @@ class Play extends Phaser.Scene {
     onGoal() {
         this.physics.pause();
         this.time.delayedCall(500, function() {
-            if (this.level < 2) {
+            if (this.level < 3) {
                 this.scene.restart({
                     level: this.level+1,
                     lives: this.lives
