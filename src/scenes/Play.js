@@ -57,6 +57,11 @@ class Play extends Phaser.Scene {
         this.physics.add.collider(this.player, this.baddies, this.playerHitBaddie, null, this);
         */
 
+        for (var i = 0; i < this.lives; i++) {
+            let life = this.add.image(16 + (i * 16), 16, 'life');
+            life.setScrollFactor(0);
+        }
+
         const camera = this.cameras.main;
         camera.startFollow(this.player);
         camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
