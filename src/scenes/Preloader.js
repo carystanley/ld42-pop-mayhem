@@ -19,10 +19,13 @@ class Preloader extends Phaser.Scene {
         });
 
         // Load assets
+        this.load.image('title', 'title.png');
+        this.load.image('title-background', 'title-background.png');
         this.load.image('tiles', 'tiles.png');
         this.load.spritesheet('player', 'player.png', { frameWidth: 24, frameHeight: 24 });
         this.load.tilemapTiledJSON('level1', 'level1.json');
         this.load.image('165', '165.png');
+        this.load.image('165-black', '165-black.png');
 
         this.load.audio('pop1', ['pop1.mp3', 'pop1.ogg']);
         this.load.audio('pop2', ['pop2.mp3', 'pop2.ogg']);
@@ -39,6 +42,8 @@ class Preloader extends Phaser.Scene {
         };
 
         this.cache.bitmapFont.add('baseFont', Phaser.GameObjects.RetroFont.Parse(this, config));
+        config = Object.assign({}, config, {image: '165-black'});
+        this.cache.bitmapFont.add('baseFontBlack', Phaser.GameObjects.RetroFont.Parse(this, config));
         // this.scene.start('title');
         this.scene.start('play');
     }

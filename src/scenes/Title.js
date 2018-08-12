@@ -4,7 +4,17 @@ class Title extends Phaser.Scene {
     }
 
     create () {
-        var pressStart = this.add.bitmapText(30, 150, 'baseFont', 'PRESS SPACE');
+        this.add.image(128, 110, 'title-background');
+        var title = this.add.image(128, 60, 'title');
+
+        this.tweens.add({
+            targets: title,
+            y: 110,
+            duration: 3000,
+            ease: 'Power2'
+        });
+
+        var pressStart = this.add.bitmapText(85, 165, 'baseFontBlack', 'PRESS SPACE');
 
         this.tweens.add({
             targets: pressStart,
