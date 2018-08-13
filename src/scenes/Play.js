@@ -89,9 +89,9 @@ class Play extends Phaser.Scene {
 
         this.playerIsSquashed = false;
         if (this.level < 3) {
-            this.popRate = 1.30;
+            this.popRate = 1.20;
         } else {
-            this.popRate = .80;
+            this.popRate = .75;
         }
         this.popCounter = 0;
     }
