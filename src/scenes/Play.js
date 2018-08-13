@@ -96,7 +96,7 @@ class Play extends Phaser.Scene {
         this.popCounter = 0;
     }
 
-    update () {
+    update (time, delta) {
         if (this.physics.world.isPaused) {
             return;
         }
@@ -111,7 +111,7 @@ class Play extends Phaser.Scene {
         if (this.isEntitySquashed(this.player)) {
             this.doPlayerSquashed();
         }
-        this.popCounter += this.popRate;
+        this.popCounter += this.popRate * (60/1000) * delta;
         while (this.popCounter > 1) {
             this.popCounter--;
             this.popSomeCorn();
