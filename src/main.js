@@ -26,7 +26,7 @@ var config = {
     ],
     antialias: false,
     pixelArt: true,
-    // fps: 30,
+    fps: 60,
     callbacks: {
         postBoot: function () {
             updateScale();
