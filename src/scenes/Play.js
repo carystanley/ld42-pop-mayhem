@@ -57,7 +57,9 @@ class Play extends Phaser.Scene {
             return (obj.type === 'ball') || (obj.type === 'cat');
         }).forEach(function(loc) {
             if (loc.type === 'ball') {
-                this.baddies.add(new Ball(this, loc.x, loc.y));
+                const ball = new Ball(this, loc.x, loc.y);
+                this.baddies.add(ball);
+                ball.setBounce(1, 1)
             }
             if (loc.type === 'cat') {
                 this.baddies.add(new Cat(this, loc.x, loc.y));
