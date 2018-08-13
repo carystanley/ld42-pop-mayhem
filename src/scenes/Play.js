@@ -52,14 +52,12 @@ class Play extends Phaser.Scene {
         }, this);
         this.physics.add.overlap(this.player, this.goals, this.onGoal, null, this);
 
-        this.baddies = this.physics.add.group();
+        this.baddies = this.add.group();
         map.filterObjects('objects', function(obj) {
             return (obj.type === 'ball') || (obj.type === 'cat');
         }).forEach(function(loc) {
             if (loc.type === 'ball') {
-                const ball = new Ball(this, loc.x, loc.y);
-                this.baddies.add(ball);
-                ball.setBounce(1, 1)
+                this.baddies.add(new Ball(this, loc.x, loc.y));
             }
             if (loc.type === 'cat') {
                 this.baddies.add(new Cat(this, loc.x, loc.y));

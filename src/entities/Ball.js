@@ -6,6 +6,7 @@ export default class Baddie extends Phaser.Physics.Arcade.Sprite {
 
         this.setMaxVelocity(500, 500)
             .setSize(8, 16)
-            .setOffset(4, 0);
+            .setOffset(4, 0)
+            .setBounce(1, 1);
     }
 }
