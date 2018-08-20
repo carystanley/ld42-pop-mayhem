@@ -107,7 +107,7 @@ class Play extends Phaser.Scene {
                 baddie.destroy();
             }
         });
-        this.player.update();
+        this.player.update(time, delta);
         if (this.isEntitySquashed(this.player)) {
             this.doPlayerSquashed();
         }

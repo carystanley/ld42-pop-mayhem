@@ -33,7 +33,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.jumpTimer = 0;
     }
 
-    update() {
+    update(time, delta) {
         const { cursors } = this;
         const onGround = this.body.blocked.down;
         const acceleration = onGround ? 300 : 100;
@@ -57,14 +57,14 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
         if ((onGround || (this.jumpTimer > 0)) && (cursors.up.isDown)) {
             if (onGround) {
-                this.jumpTimer = 10;
+                this.jumpTimer = 170;
             }
             this.setAccelerationY(-1100);
         } else {
             this.setAccelerationY(0);
         }
         if (this.jumpTimer > 0) {
-            this.jumpTimer--;
+            this.jumpTimer -= delta;
         }
 
         if (onGround) {
