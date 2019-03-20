@@ -59,10 +59,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             if (onGround) {
                 this.jumpTimer = 170;
             }
-            this.setAccelerationY(-1100);
-        } else {
-            this.setAccelerationY(0);
+            this.setVelocityY(-120);
         }
+
         if (this.jumpTimer > 0) {
             this.jumpTimer -= delta;
         }
