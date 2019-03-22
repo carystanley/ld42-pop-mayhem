@@ -11,24 +11,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             .setCollideWorldBounds(true);
 
         this.cursors = scene.input.keyboard.createCursorKeys();
-        scene.anims.create({
-            key: 'idle',
-            frames: scene.anims.generateFrameNumbers('player', { start: 0, end: 0 }),
-            frameRate: 10,
-            repeat: -1
-        });
-        scene.anims.create({
-            key: 'jump',
-            frames: scene.anims.generateFrameNumbers('player', { start: 1, end: 1 }),
-            frameRate: 10,
-            repeat: -1
-        });
-        scene.anims.create({
-            key: 'run',
-            frames: scene.anims.generateFrameNumbers('player', { start: 3, end: 8 }),
-            frameRate: 10,
-            repeat: -1
-        });
         this.hurtCount = 0;
         this.jumpTimer = 0;
     }
@@ -68,12 +50,12 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
         if (onGround) {
             if (this.body.velocity.x !== 0) {
-                this.anims.play('run', true);
+                this.anims.play('player-run', true);
             } else {
-                this.anims.play('idle', true);
+                this.anims.play('player-idle', true);
             }
         } else {
-            this.anims.play('jump', true);
+            this.anims.play('player-jump', true);
         }
     }
 }

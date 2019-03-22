@@ -49,6 +49,33 @@ class Preloader extends Phaser.Scene {
         this.cache.bitmapFont.add('baseFont', Phaser.GameObjects.RetroFont.Parse(this, config));
         config = Object.assign({}, config, {image: '165-black'});
         this.cache.bitmapFont.add('baseFontBlack', Phaser.GameObjects.RetroFont.Parse(this, config));
+
+        // Define Animations
+        this.anims.create({
+            key: 'player-idle',
+            frames: this.anims.generateFrameNumbers('player', { start: 0, end: 0 }),
+            frameRate: 10,
+            repeat: -1
+        });
+        this.anims.create({
+            key: 'player-jump',
+            frames: this.anims.generateFrameNumbers('player', { start: 1, end: 1 }),
+            frameRate: 10,
+            repeat: -1
+        });
+        this.anims.create({
+            key: 'player-run',
+            frames: this.anims.generateFrameNumbers('player', { start: 3, end: 8 }),
+            frameRate: 10,
+            repeat: -1
+        });
+        this.anims.create({
+            key: 'cat-idle',
+            frames: this.anims.generateFrameNumbers('cat', { start: 0, end: 1 }),
+            frameRate: 1,
+            repeat: -1
+        });
+
         this.scene.start('title');
     }
 }
