@@ -54,6 +54,7 @@ class Preloader extends Phaser.Scene {
         this.setupAnimations([
             { key: 'player-idle', image: 'player', start: 0, end: 0, frameRate: 10, repeat: -1 },
             { key: 'player-jump', image: 'player', start: 1, end: 1, frameRate: 10, repeat: -1 },
+            { key: 'player-skid', image: 'player', start: 2, end: 2, frameRate: 10, repeat: -1 },
             { key: 'player-run', image: 'player', start: 3, end: 8, frameRate: 10, repeat: -1 },
             { key: 'cat-idle', image: 'cat', start: 0, end: 1, frameRate: 1, repeat: -1 }
         ]);

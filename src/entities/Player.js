@@ -50,7 +50,11 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
         if (onGround) {
             if (this.body.velocity.x !== 0) {
-                this.anims.play('player-run', true);
+                if (Math.sign(this.body.velocity.x) !== Math.sign(this.body.acceleration.x)) {
+                    this.anims.play('player-skid', true);
+                } else {
+                    this.anims.play('player-run', true);
+                }
             } else {
                 this.anims.play('player-idle', true);
             }
