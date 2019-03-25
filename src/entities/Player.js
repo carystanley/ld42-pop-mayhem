@@ -18,7 +18,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     update(time, delta) {
         const { cursors } = this;
         const onGround = this.body.blocked.down;
-        const acceleration = onGround ? 300 : 100;
+        const acceleration = onGround ? 500 : 100;
 
         if (this.hurtCount > 0) {
             this.visible = Math.floor(this.hurtCount / 3) % 2 === 0;
