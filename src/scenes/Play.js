@@ -26,7 +26,6 @@ class Play extends Phaser.Scene {
         const tileset = map.addTilesetImage('tiles', 'tiles');
 
         map.createStaticLayer('background', tileset, 0, 0);
-        map.createStaticLayer('furniture', tileset, 0, 0);
         const worldLayer = map.createDynamicLayer('world', tileset, 0, 0);
         worldLayer.setCollisionByProperty({ collides: true });
         this.physics.world.gravity.y = 350;
