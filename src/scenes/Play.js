@@ -88,11 +88,13 @@ class Play extends Phaser.Scene {
         }, [], this);
 
         this.playerIsSquashed = false;
-        if (this.level < 3) {
-            this.popRate = 1.20;
-        } else {
-            this.popRate = .75;
-        }
+        this.popRate = ({
+            1: 1.2,
+            2: 1.2,
+            3: 1.2,
+            4: 1.2,
+            5: .75
+        })[this.level];
         this.popCounter = 0;
     }
 
@@ -240,7 +242,7 @@ class Play extends Phaser.Scene {
     onGoal() {
         this.physics.pause();
         this.time.delayedCall(500, function() {
-            if (this.level < 3) {
+            if (this.level < 5) {
                 this.scene.restart({
                     level: this.level+1,
                     lives: this.lives
