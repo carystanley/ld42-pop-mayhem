@@ -92,8 +92,8 @@ class Play extends Phaser.Scene {
             1: 1.2,
             2: 1.2,
             3: 1.3,
-            4: 1.2,
-            5: .75
+            4: .75,
+            5: 1.2
         })[this.level];
         this.popCounter = 0;
     }
