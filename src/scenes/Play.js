@@ -91,7 +91,7 @@ class Play extends Phaser.Scene {
         this.popRate = ({
             1: 1.2,
             2: 1.2,
-            3: 1.2,
+            3: 1.3,
             4: 1.2,
             5: .75
         })[this.level];
