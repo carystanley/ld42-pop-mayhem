@@ -71,9 +71,11 @@ class Play extends Phaser.Scene {
         }
 
         const camera = this.cameras.main;
+        camera.roundPixels = true;
         camera.startFollow(this.player);
         camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
         camera.setDeadzone(40, 20);
+
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
         this.popSounds = [
