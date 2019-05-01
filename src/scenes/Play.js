@@ -1,3 +1,4 @@
+/* global ga */
 import Player from '../entities/Player.js';
 import Ball from '../entities/Ball.js';
 import Cat from '../entities/Cat.js';
@@ -21,6 +22,7 @@ class Play extends Phaser.Scene {
         this.level = config.level;
         this.lives = config.lives;
         console.log(config);
+        ga('send', 'event', 'play', 'start-level' + this.level);
 
         const map = this.make.tilemap({ key: 'level' + this.level });
         const tileset = map.addTilesetImage('tiles', 'tiles');
@@ -220,6 +222,7 @@ class Play extends Phaser.Scene {
             }, [], this);
 
             // restart game
+            ga('send', 'event', 'play', 'die-level' + this.level);
             this.time.delayedCall(500, function() {
                 if (this.lives > 1) {
                     this.scene.restart({
@@ -227,6 +230,7 @@ class Play extends Phaser.Scene {
                         lives: this.lives-1
                     });
                 } else {
+                    ga('send', 'event', 'play', 'gameover-level' + this.level);
                     this.scene.start('gameover');
                 }
             }, [], this);
@@ -249,6 +253,7 @@ class Play extends Phaser.Scene {
                     lives: this.lives
                 });
             } else {
+                ga('send', 'event', 'play', 'completed');
                 this.scene.start('completed');
             }
         }, [], this);
