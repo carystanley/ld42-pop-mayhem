@@ -25,7 +25,7 @@ class Play extends Phaser.Scene {
         ga('send', 'event', 'play', 'start-level' + this.level);
 
         const map = this.make.tilemap({ key: 'level' + this.level });
-        const tileset = map.addTilesetImage('tiles', 'tiles');
+        const tileset = map.addTilesetImage('tiles', 'tiles', 8, 8, 1, 2);
 
         map.createStaticLayer('background', tileset, 0, 0);
         const worldLayer = map.createDynamicLayer('world', tileset, 0, 0);

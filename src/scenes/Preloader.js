@@ -22,7 +22,7 @@ class Preloader extends Phaser.Scene {
         this.load.image('title', 'title.png');
         this.load.image('title-background', 'title-background.png');
         this.load.image('life', 'life.png');
-        this.load.image('tiles', 'tiles.png');
+        this.load.image('tiles', 'tiles-extruded.png');
         this.load.image('ball', 'ball.png');
         this.load.spritesheet('player', 'player.png', { frameWidth: 24, frameHeight: 24 });
         this.load.spritesheet('cat', 'cat.png', { frameWidth: 24, frameHeight: 16 });
