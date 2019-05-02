@@ -8,6 +8,7 @@
     "lint": "eslint --quiet ./src/**/**.js",
     "dev": "webpack-dev-server --hot --history-api-fallback --mode development --open",
     "build-zip": "zip -r build.zip index.html styles.css app.js phaser-arcade-physics.min.js assets",
+    "extruder": "tile-extruder --tileWidth 16 --tileHeight 16 --input ./assets/tiles.png --output ./assets/tiles-extruded.png",
     "build": "webpack -p"
   },
   "author": "",
@@ -18,6 +19,7 @@
   "devDependencies": {
     "eslint": "^4.18.1",
     "pre-commit": "^1.2.2",
+    "tile-extruder": "^1.1.0",
     "webpack": "^4.16.5",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.5"
